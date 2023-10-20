@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Categories } from "./Categories";
 import { fetchData } from "../utils/FetchFromApi";
 import SkeletonCard from "./SkeletonCard";
 
+import VideoCard from "./VideoCard";
+import { useParams } from "react-router-dom";
+import ChannelCard from "./ChannelCard";
+
 const Feed = () => {
-	const [selectedCategory, setselectedCategory] = useState("New");
+	const { cate } = useParams();
+	const [selectedCategory, setselectedCategory] = useState(
+		cate == null ? "New" : cate
+	);
 	const [videos, setvideos] = useState([]);
-	const [isLoading, setisLoading] = useState(true);
+	const [isLoading, setisLoading] = useState(cate == null ? true : true);
+	const divForScroll = useRef(null);
 	useEffect(() => {
 		fetching();
-	}, [selectedCategory, isLoading]);
+	}, [selectedCategory]);
 
 	const fetching = async () => {
 		fetchData(`search?part=snippet&q=${selectedCategory}`).then((data) =>
 			setvideos(data.items)
 		);
-		console.log(videos);
 		setTimeout(() => {
-			setisLoading(true);
-		}, 1000);
+			setisLoading(false);
+		}, 500);
 	};
 
 	return (
@@ -33,6 +40,7 @@ const Feed = () => {
 							onClick={() => {
 								setselectedCategory(value.name);
 								setisLoading(true);
+								divForScroll.current.scrollIntoView(true);
 							}}
 							key={value.name}
 						>
@@ -44,42 +52,23 @@ const Feed = () => {
 				<div className="copy">Copyright 2023 Youtube</div>
 			</aside>
 			<main>
+				<div ref={divForScroll}></div>
 				<h4>
 					{selectedCategory} <span style={{ color: "red" }}>videos</span>
 				</h4>
 				<div className="videos">
-					{/* {videos.map((value, index) =>
-						isLoading ? (
-							<SkeletonCard />
-						) : (
-							<div className="videoCard" key={index}>
-								<img
-									src={value.snippet.thumbnails.high.url}
-									width={"100%"}
-									alt=""
-								/>
-							</div>
-						)
-					)} */}
 					{isLoading
-						? videos.map((value, index) => <SkeletonCard />)
+						? videos.map((value, index) => <SkeletonCard key={index} />)
 						: videos.map((value, index) => (
-								<div className="videoCard" key={index}>
-									<img
-										src={value.snippet.thumbnails.high.url}
-										width={"100%"}
-										alt=""
-									/>
-								</div>
+								<>
+									{value.id.channelId && <ChannelCard data={value} />}
+									{value.id.videoId && <VideoCard data={value} />}
+								</>
 						  ))}
 				</div>
 			</main>
 		</div>
 	);
-};
-
-const videoCard = () => {
-	return <></>;
 };
 
 export default Feed;

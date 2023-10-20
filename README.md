@@ -1,8 +1,10 @@
-# React + Vite
+## learing/ mistakes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- make seperate scss file for indivdual components and write media query at last in it
+- dont use if this is null then null or data, rather use
 
-Currently, two official plugins are available:
+```
+ if(!videoDetial.statistics/snippet) return "loading"
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- destructure those value , which you are going to use

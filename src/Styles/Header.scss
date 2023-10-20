@@ -10,6 +10,7 @@ nav {
 	> .logo {
 		display: flex;
 		align-items: center;
+		cursor: pointer;
 
 		> h2 {
 			margin-left: -10px;
@@ -20,6 +21,7 @@ nav {
 		align-items: center;
 		width: 40%;
 		height: 40px;
+		position: relative;
 
 		input {
 			width: 100%;
@@ -37,8 +39,8 @@ nav {
 				border: 1px solid rgb(99, 99, 189);
 			}
 		}
-		> div {
-			width: 10%;
+		> .searchBtn {
+			width: 15%;
 			height: 100%;
 			background-color: #3d3e3e;
 			border-radius: 0 100px 100px 0;
@@ -47,8 +49,37 @@ nav {
 			place-items: center;
 			cursor: pointer;
 		}
+
+		> .history {
+			// height: 200px;
+			z-index: 2;
+			padding: 10px 20px;
+			width: 85%;
+			background-color: #0f0f0f;
+			position: absolute;
+			top: 50px;
+			margin-left: 10px;
+			border-radius: 20px;
+			> div {
+				display: flex;
+				justify-content: space-between;
+				padding: 10px 0;
+				> p {
+					font-size: 20px;
+				}
+				> button {
+					background-color: transparent;
+					border: none;
+					outline: none;
+					color: blue;
+				}
+			}
+		}
 	}
-	> svg {
-		margin-right: 20px;
+	> .profile {
+		width: 40px;
+		aspect-ratio: 1;
+		overflow: hidden;
+		border-radius: 50%;
 	}
 }

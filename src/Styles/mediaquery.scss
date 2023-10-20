@@ -1,0 +1,239 @@
+@media screen and (max-width: 1000px) {
+	.feed,
+	.channel,
+	.searchPage {
+		> main {
+			> h4 {
+				font-size: 30px;
+			}
+			.videos {
+				grid-template-columns: 1fr 1fr;
+			}
+			.channelCard {
+				> .image {
+					img {
+						width: 140px;
+						height: 140px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	nav {
+		> .search {
+			> .seacrhBtn {
+				width: 20%;
+				min-width: 40px;
+				height: 100%;
+				background-color: #3d3e3e;
+				border-radius: 0 100px 100px 0;
+				border: 1px solid #3d3e3e;
+				display: grid;
+				place-items: center;
+				cursor: pointer;
+			}
+		}
+		> svg {
+			margin-right: 20px;
+		}
+	}
+
+	.feed,
+	.channel,
+	.searchPage {
+		flex-direction: column;
+
+		> aside {
+			width: 100%;
+			height: auto;
+			display: flex;
+			align-items: center;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.buttons {
+				flex-direction: row;
+			}
+			.copy {
+				margin-top: 0px;
+				white-space: nowrap;
+			}
+		}
+
+		> main {
+			background-color: black;
+			height: 100%;
+			width: 100%;
+			padding: 0 20px;
+			padding-left: 20px;
+
+			overflow-y: auto;
+			-webkit-scrollbar {
+				display: none;
+			}
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			> h4 {
+				font-size: 30px;
+				margin-bottom: 20px;
+			}
+			.videos {
+				grid-template-columns: 1fr 1fr;
+			}
+			.banner {
+				width: 100%;
+			}
+			// ####### channel card #######
+			.channelCard {
+				> .image {
+					img {
+						width: 130px;
+						height: 130px;
+					}
+				}
+				> .info {
+					flex-direction: column;
+					align-items: normal;
+					> .left {
+						p {
+							margin-bottom: 5px;
+						}
+						.des {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 426px) {
+	nav {
+		padding: 10px 0;
+		padding-right: 10px;
+
+		> .search {
+			width: 50%;
+			height: 35px;
+			input {
+				padding-left: 10px;
+			}
+
+			> .searchBtn {
+				width: 30%;
+				padding: 5px;
+				aspect-ratio: 1;
+			}
+			.history {
+				width: 190%;
+				left: -100%;
+			}
+		}
+		.profile {
+			display: none;
+		}
+	}
+
+	.feed,
+	.channel,
+	.searchPage {
+		> aside {
+			width: 100%;
+			height: auto;
+			display: flex;
+			padding: 10px;
+
+			align-items: center;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.buttons {
+				flex-direction: row;
+				button {
+					padding: 5px 10px;
+					margin-bottom: 5px;
+				}
+			}
+			.copy {
+				margin-top: 0px;
+				white-space: nowrap;
+			}
+		}
+
+		> main {
+			padding: 10px;
+
+			> h4 {
+				font-size: 30px;
+			}
+			.videos {
+				grid-template-columns: 1fr;
+			}
+			.banner {
+				height: 130px;
+				margin-bottom: 20px;
+				border-radius: 10px;
+			}
+			.channelInfo {
+				flex-direction: column;
+				> img {
+					height: 100px;
+					width: 100px;
+				}
+				.info {
+					text-align: center;
+					h1 {
+						justify-content: center;
+						font-size: 30px;
+						margin-top: 20px;
+					}
+					button {
+						width: 100%;
+					}
+				}
+			}
+			// ####### channel card #######
+			.channelCard {
+				> .image {
+					img {
+						width: 100px;
+						height: 100px;
+					}
+				}
+				> .info {
+					flex-direction: column;
+					align-items: normal;
+					> .left {
+						h2 {
+							margin-bottom: 10px;
+							font-size: 15px;
+						}
+						p {
+							margin-bottom: 5px;
+							line-height: 21px;
+							font-size: 15px;
+							.dot {
+								// display: none;
+								visibility: hidden;
+								height: 1px;
+								display: block;
+							}
+						}
+					}
+					> .right {
+						button {
+							padding: 6px 13px;
+							font-size: 15px;
+							margin-top: -5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
